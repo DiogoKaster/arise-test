@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 interface RecipeCardProps {
+  idMeal: string
   strMeal: string
   strInstructions: string
   strMealThumb: string
@@ -8,6 +9,7 @@ interface RecipeCardProps {
 }
 
 export function RecipeCard({
+  idMeal,
   strMeal,
   strInstructions,
   strMealThumb,
@@ -15,7 +17,7 @@ export function RecipeCard({
 }: RecipeCardProps) {
   return (
     <div className="bg-white shadow rounded-xl hover:scale-105 transition-all">
-      <Link to="/">
+      <Link to={`/meal/${idMeal}`}>
         <img src={strMealThumb} alt="" className="rounded-t-xl w-full h-48 object-cover" />
       </Link>
       <div className="p-3">

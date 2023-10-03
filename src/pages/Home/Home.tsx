@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { api } from '../../lib/axios'
 
 interface Recipe {
+  idMeal: string
   strMeal: string
   strInstructions: string
   strMealThumb: string
@@ -37,6 +38,7 @@ export function Home() {
         {recipes.map((recipe, index) => (
           <RecipeCard
             key={index}
+            idMeal={recipe.idMeal}
             strInstructions={recipe.strInstructions}
             strMeal={recipe.strMeal}
             strMealThumb={recipe.strMealThumb}
