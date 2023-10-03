@@ -3,7 +3,7 @@ import { Header } from '../../components/Header/Header'
 
 export function DefaultLayout() {
   return (
-    <div className="h-[100vh] bg-gray-100">
+    <div className="h-full bg-gray-100">
       <Header />
       <main>
         <Outlet />
