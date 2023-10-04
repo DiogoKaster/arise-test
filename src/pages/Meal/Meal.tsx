@@ -85,17 +85,21 @@ export function Meal() {
           <div>
             <h2 className="text-2xl font-semibold mb-2">Ingredientes</h2>
             <ul>
-              {recipe.strIngredient.map((ingredient, index) => (
-                <li key={index}>{ingredient}</li>
-              ))}
+              {recipe.strIngredient ? (
+                recipe.strIngredient.map((ingredient, index) => <li key={index}>{ingredient}</li>)
+              ) : (
+                <li>Nenhum ingrediente disponível</li>
+              )}
             </ul>
           </div>
           <div>
             <h2 className="text-2xl font-semibold mb-2">Medidas</h2>
             <ul>
-              {recipe.strMeasure.map((measure, index) => (
-                <li key={index}>{measure}</li>
-              ))}
+              {recipe.strMeasure ? (
+                recipe.strMeasure.map((measure, index) => <li key={index}>{measure}</li>)
+              ) : (
+                <li>Nenhuma medida disponível</li>
+              )}
             </ul>
           </div>
         </div>
