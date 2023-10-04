@@ -3,9 +3,10 @@ import { Home } from './pages/Home/Home'
 import { DefaultLayout } from './layouts/DefaultLayout/DefaultLayout'
 import { Meal } from './pages/Meal/Meal'
 import { ByName } from './pages/ByName/ByName'
+import { ByLetterLayout } from './layouts/ByLetterLayout/ByLetterLayout'
 import { ByLetter } from './pages/ByLetter/ByLetter'
 import { Ingredients } from './pages/Ingredients/Ingredients'
-import { IngredientRecipe } from './pages/Ingredients/pages/IngredientRecipe'
+import { IngredientRecipes } from './pages/Ingredients/pages/IngredientRecipe'
 
 export function Router() {
   return (
@@ -14,9 +15,11 @@ export function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/meal/:id" element={<Meal />} />
         <Route path="/by-name" element={<ByName />} />
-        <Route path="/by-letter" element={<ByLetter />} />
+        <Route path="/by-letter" element={<ByLetterLayout />}>
+          <Route path=":letter" element={<ByLetter />} />
+        </Route>
         <Route path="/ingredients" element={<Ingredients />} />
-        <Route path="/ingredients/:ingredient" element={<IngredientRecipe />} />
+        <Route path="/ingredients/:ingredient" element={<IngredientRecipes />} />
       </Route>
     </Routes>
   )
