@@ -4,7 +4,7 @@ import { api } from '../../../lib/axios'
 import { Recipe } from '../../Home/Home'
 import { RecipeCard } from '../../../components/RecipeCard/RecipeCard'
 
-export function IngredientRecipe() {
+export function IngredientRecipes() {
   const { ingredient } = useParams()
   const [recipes, setRecipes] = useState([] as Recipe[])
 
