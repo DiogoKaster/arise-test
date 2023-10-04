@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 interface RecipeCardProps {
   idMeal: string
   strMeal: string
-  strInstructions: string
+  strInstructions?: string
   strMealThumb: string
-  strYoutube: string
+  strYoutube?: string
 }
 
 export function RecipeCard({
@@ -24,11 +24,13 @@ export function RecipeCard({
         <h3 className="font-bold">{strMeal}</h3>
         <p className="mb-4 overflow-hidden max-h-48 line-clamp-4">{strInstructions}</p>
         <div className="flex items-center justify-between">
-          <Link
-            to={strYoutube}
-            className="px-3 py-2 rounded border-2 text-white border-orange-600 bg-orange-500 hover:bg-orange-600 transition-colors">
-            YouTube
-          </Link>
+          {strYoutube && (
+            <Link
+              to={strYoutube}
+              className="px-3 py-2 rounded border-2 text-white border-orange-600 bg-orange-500 hover:bg-orange-600 transition-colors">
+              YouTube
+            </Link>
+          )}
         </div>
       </div>
     </div>

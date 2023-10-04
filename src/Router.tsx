@@ -5,6 +5,7 @@ import { Meal } from './pages/Meal/Meal'
 import { ByName } from './pages/ByName/ByName'
 import { ByLetter } from './pages/ByLetter/ByLetter'
 import { Ingredients } from './pages/Ingredients/Ingredients'
+import { IngredientRecipe } from './pages/Ingredients/pages/IngredientRecipe'
 
 export function Router() {
   return (
@@ -15,6 +16,7 @@ export function Router() {
         <Route path="/by-name" element={<ByName />} />
         <Route path="/by-letter" element={<ByLetter />} />
         <Route path="/ingredients" element={<Ingredients />} />
+        <Route path="/ingredients/:ingredient" element={<IngredientRecipe />} />
       </Route>
     </Routes>
   )

@@ -42,7 +42,10 @@ export function Ingredients() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 px-2 pb-8">
         {ingredients.length > 0 ? (
           ingredients.map((ingredient, index) => (
-            <Link to="/" key={index} className="bg-white rounded shadow-md p-4 font-bold">
+            <Link
+              to={`/ingredients/${ingredient.strIngredient}`}
+              key={index}
+              className="bg-white rounded shadow-md p-4 font-bold hover:scale-105 transition-all">
               <p>{ingredient.strIngredient}</p>
             </Link>
           ))
