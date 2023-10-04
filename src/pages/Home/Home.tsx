@@ -2,7 +2,7 @@ import { RecipeCard } from '../../components/RecipeCard/RecipeCard'
 import { useEffect, useState } from 'react'
 import { api } from '../../lib/axios'
 
-interface Recipe {
+export interface Recipe {
   idMeal: string
   strMeal: string
   strInstructions: string

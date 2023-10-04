@@ -13,12 +13,12 @@ export function Header() {
           Pesquisar Receitas
         </Link>
         <Link
-          to="/by-name"
+          to="/by-letter"
           className="inline-flex items-center px-2 h-full transition-colors hover:bg-orange-500 hover:text-white">
           Receitas por Letra
         </Link>
         <Link
-          to="/by-name"
+          to="/ingredients"
           className="inline-flex items-center px-2 h-full transition-colors hover:bg-orange-500 hover:text-white">
           Receitas por Ingrediente
         </Link>
