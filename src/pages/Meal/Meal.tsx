@@ -4,13 +4,16 @@ import { RecipeContext } from '../../contexts/RecipeContext'
 
 export function Meal() {
   const recipeParams = useParams<{ id: string }>()
-  const { recipeList, fetchRecipeById } = useContext(RecipeContext)
+  const { recipeList, fetchRecipeById, addToFavorites } = useContext(RecipeContext)
+
+  function handleAddToFavorites() {
+    addToFavorites(recipeList[0])
+  }
 
   useEffect(() => {
     fetchRecipeById(recipeParams.id)
   }, [])
 
-  console.log(recipeList)
   return (
     <section className="max-w-[1200px] mx-auto min-h-screen">
       <div className="max-w-[800px] mx-auto p-8">
@@ -75,6 +78,11 @@ export function Meal() {
               Source
             </Link>
           )}
+          <button
+            onClick={handleAddToFavorites}
+            className="px-3 py-2 rounded border-2 text-white border-orange-600 bg-orange-500 hover:bg-orange-600 transition-colors">
+            Favoritar
+          </button>
         </div>
       </div>
     </section>
