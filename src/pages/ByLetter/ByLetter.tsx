@@ -1,25 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import { api } from '../../lib/axios'
 import { RecipeCard } from '../../components/RecipeCard/RecipeCard'
-import { Recipe } from '../Home/Home'
+import { RecipeContext } from '../../contexts/RecipeContext'
 
 export function ByLetter() {
-  const { letter } = useParams()
-  const [recipes, setRecipes] = useState([] as Recipe[])
-
-  async function fetchRecipesByLetter() {
-    const response = await api.get(`/search.php?f=${letter}`)
-    setRecipes(response.data.meals)
-  }
+  const { letter } = useParams<{ letter: string }>()
+  const { recipeList, fetchRecipesByLetter } = useContext(RecipeContext)
 
   useEffect(() => {
-    fetchRecipesByLetter()
-  }, [recipes])
+    if (letter) {
+      fetchRecipesByLetter(letter)
+    }
+  }, [letter])
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5 px-8 pb-8">
-      {recipes.map((recipe, index) => (
+      {recipeList.map((recipe, index) => (
         <RecipeCard
           key={index}
           idMeal={recipe.idMeal}
