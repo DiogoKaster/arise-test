@@ -17,6 +17,9 @@ interface Recipe {
 
 interface RecipeContextType {
   recipeList: Recipe[]
+  favoriteRecipes: Recipe[]
+  addToFavorites: (recipe: Recipe) => void
+  deleteFromFavorites: (id: string) => void
   fetchRandomRecipes: () => void
   fetchRecipeById: (id?: string) => void
   fetchRecipesByName: (name?: string) => void
@@ -32,6 +35,21 @@ interface RecipeContextProviderProps {
 
 export function RecipeContextProvider({ children }: RecipeContextProviderProps) {
   const [recipeList, setRecipeList] = useState([] as Recipe[])
+  const [favoriteRecipes, setFavoriteRecipes] = useState([] as Recipe[])
+
+  function addToFavorites(recipe: Recipe) {
+    if (favoriteRecipes.find((favorite) => favorite.idMeal === recipe.idMeal)) {
+      return
+    } else {
+      alert('Receita adicionada aos favoritos!')
+      setFavoriteRecipes([...favoriteRecipes, recipe])
+    }
+  }
+
+  function deleteFromFavorites(id: string) {
+    const newFavoriteRecipes = favoriteRecipes.filter((recipe) => recipe.idMeal !== id)
+    setFavoriteRecipes(newFavoriteRecipes)
+  }
 
   async function fetchRandomRecipes() {
     const recipesArray = []
@@ -102,6 +120,9 @@ export function RecipeContextProvider({ children }: RecipeContextProviderProps) 
     <RecipeContext.Provider
       value={{
         recipeList,
+        favoriteRecipes,
+        addToFavorites,
+        deleteFromFavorites,
         fetchRandomRecipes,
         fetchRecipeById,
         fetchRecipesByName,
