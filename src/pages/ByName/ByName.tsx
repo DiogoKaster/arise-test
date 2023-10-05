@@ -1,16 +1,14 @@
 import { RecipeSearchInput } from '../../components/RecipeSearchInput/RecipeSearchInput'
-import { useState } from 'react'
-import { api } from '../../lib/axios'
 import { RecipeCard } from '../../components/RecipeCard/RecipeCard'
-import { Recipe } from '../Home/Home'
+import { useContext, useEffect } from 'react'
+import { RecipeContext } from '../../contexts/RecipeContext'
 
 export function ByName() {
-  const [recipes, setRecipes] = useState([] as Recipe[])
+  const { recipeList, fetchRecipesByName } = useContext(RecipeContext)
 
-  async function fetchRecipesByName(name?: string) {
-    const response = await api.get(`/search.php?s=${name}`)
-    setRecipes(response.data.meals)
-  }
+  useEffect(() => {
+    fetchRecipesByName('')
+  }, [])
 
   return (
     <section className="max-w-[1200px] mx-auto min-h-screen">
@@ -19,8 +17,8 @@ export function ByName() {
       </div>
       <RecipeSearchInput withKeyDown={true} onSearch={fetchRecipesByName} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 px-8 pb-8">
-        {recipes.length > 0 ? (
-          recipes.map((recipe, index) => (
+        {recipeList.length > 0 ? (
+          recipeList.map((recipe, index) => (
             <RecipeCard
               key={index}
               idMeal={recipe.idMeal}
